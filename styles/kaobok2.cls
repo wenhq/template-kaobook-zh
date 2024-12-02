@@ -20,9 +20,9 @@
 \setsansfont{TeX Gyre Heros}
 \setmonofont{TeX Gyre Cursor}
 \setmathfont{TeX Gyre Schola Math}
-\setCJKmainfont{Source Han Serif SC}
-\setCJKsansfont{Source Han Sans SC}
-\setCJKmonofont{Source Han Mono SC}
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{Source Han Serif SC}
+\setCJKsansfont[AutoFakeBold,AutoFakeSlant]{Source Han Sans SC}
+\setCJKmonofont[AutoFakeBold,AutoFakeSlant]{Source Han Mono SC}
 
 % 段落格式
 \RequirePackage{indentfirst}
