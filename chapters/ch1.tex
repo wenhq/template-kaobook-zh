@@ -1,13 +1,108 @@
-\chapter{记录}
-在 LaTeX 文档中，\\frontmatter 命令通常用于标记文档的前言部分开始。在 KOMA-Script 文档类（如 scrbook 或 scrreprt）和一些其他文档类中，\\frontmatter 命令之后的内容会使用罗马数字（i, ii, iii, ...）进行页码编号，直到 \\mainmatter 命令，之后的内容会使用阿拉伯数字（1, 2, 3, ...）进行页码编号。
+\setchapterpreamble[u]{\margintoc}
+\chapter{如何使用本项目}
 
-frontmatter 部分通常包括：
+\section{概述}
+本项目基于 \href{https://github.com/fmarotta/kaobook}{kaobook 项目}进行中文汉化和二次开发。
 
-封面（Title Page）
-版权信息（Copyright Page）
-致谢（Acknowledgments）
-摘要（Abstract）
-目录（Table of Contents）
-列表（List of Figures, List of Tables 等）
-引言（Introduction）或前言（Preface）
-这些部分在书籍和长篇报告中很常见，它们为读者提供了文档的概览和导航。
+kaobook 是一个 LaTeX 文档类，旨在为书籍、报告等长篇文档提供一个优雅、灵活的排版框架。该项目基于 KOMA-Script 构建，并融入了许多独特的设计元素，如宽边距、迷你目录、自定义章节标题等，以满足学术著作和技术文档的高排版要求。
+
+在实际使用 Kaobook 进行文档编写的过程，发现它在处理包含大量不同尺寸图片的文档，尤其是注释说明类操作手册方面表现出色，生成的文档布局整齐、视觉效果良好，且在排版时能够合理分配空间，提升文档的可读性与专业性。
+
+本项目是一个使用 kaobook 的文档模板，为了方便中文文档的快速使用。项目以 kaobook 文档类为基础，通过扩展宏包的方式使用 kao 样式的文档排版，以实现更高效和专业的排版效果。
+
+\section{注意事项}
+
+项目的作者仅为 LaTeX 的爱好者，因此在项目的开发过程中，难免存在一些考虑不周或使用不当的地方。这些问题可能源于作者对 LaTeX 以及 kaobook 特性和功能的理解尚未完全深入，或者由于实践经验的局限性，导致某些细节未能得到充分优化。
+
+尽管该项目能够满足基本需求，但在复杂文档处理、性能优化或特殊排版要求方面，可能会存在不足之处。用户在使用过程中应注意可能遇到的一些局限性，并根据实际需求进行适当的调整和补充。
+
+\section{快速上手}
+
+项目的主文件是 main.tex，按导言区和文档主体两部分进行说明。
+
+\subsection{导言区}
+
+文档类 kaobook 被选为文档的基础类，适用于书籍和长篇文档的排版，支持双面打印（twoside）功能，使得排版更加符合传统书籍的格式要求。为了简化文献引用和参考文献列表的管理，使用了 kaorefs 宏包，它能够自动处理文献的引用格式和生成文献列表，确保文献管理的准确性和一致性。
+
+针对中文排版，kao-zh 宏包提供了优化的中文排版支持，包括字体、行间距、段落以及对kao相关宏包的汉化调整，使得中文文档的排版更加规范和易读。此外，为了满足更复杂的排版需求，kao-ext 宏包被用于提供扩展功能，允许用户根据需要进行更多自定义，如复杂的表格、数学公式和特殊排版效果。
+
+如~\reflistings{文档导言区示例}~所示，使用kaobook中文模板在导言区的宏包引用实例的写法。
+
+\begin{listing}[H]
+    \begin{minted}{latex}
+        %! Tex program = xelatex
+        \documentclass[twoside]{styles/kaobook}
+        \usepackage{styles/kaorefs}
+        \usepackage{styles/kao-zh}
+        \usepackage{styles/kao-ext}
+    \end{minted}
+    \caption{文档导言区示例}
+    \lablistings{文档导言区示例}
+\end{listing}
+
+这些宏包的结合，使得本书的排版更加精美、规范，并且方便文献管理，提升了整体的排版质量和效率。
+
+\subsection{文档主体}
+
+在 LaTeX 中， \mintinline{latex}|\frontmatter| 、 \mintinline{latex}|\mainmatter| 和  \mintinline{latex}|\backmatter| 是用于结构化文档内容的重要命令，特别适用于书籍类文档。这些命令帮助区分文档的不同部分，并控制页码格式。具体而言， \mintinline{latex}|\frontmatter| 用于定义文档的前言部分， \mintinline{latex}|\mainmatter| 标志着正文部分的开始，而 \mintinline{latex}|\backmatter| 则用于定义附录等后续内容。
+
+\begin{itemize}
+    \item \textbf{\mintinline{latex}|\frontmatter| 命令}标志着文档的前言部分的开始。前言部分通常包含封面、版权信息、致谢、目录等内容，而不涉及文档的正式正文。在这一部分，LaTeX 会使用罗马数字（如 i, ii, iii 等）作为页码格式。这种格式的设置是为了区分前言部分与正文部分，并保持整洁的排版风格。
+    \item \textbf{\mintinline{latex}|\mainmatter| 命令}标志着文档正式正文部分的开始。在执行该命令后，文档的页码将从 1 开始，并切换为 阿拉伯数字（如 1, 2, 3 等）\sidenote{ kaobook 文档的 \mintinline{latex}|\mainmatter| 命令不仅仅恢复页码格式，还会影响章节标题的排版，提供更加专业和规范的章节排版样式。同时，正文部分的页面布局也会依据 kaobook 的设计进行调整，通常包括更宽的页边距和专门设计的章节封面。}。这表明正文部分的内容正式开始，通常包括章节、节、小节等内容。
+    \item \textbf{\mintinline{latex}|\backmatter| 命令}标志着文档的附录部分的开始。附录部分通常包括参考文献、索引、附加数据等内容。此时，文档的页码继续使用阿拉伯数字，并且不会进行新的章节编号。
+\end{itemize}
+
+为了方便管理文档，在文档主体区域的代码写法如~\reflistings{文档主体区域示例}~所示。
+\begin{listing}[H]
+    \begin{minted}{latex}
+        \begin{document}
+        \input{infos/titlepage.tex}
+        \frontmatter
+        \input{infos/preface.tex}
+        \input{infos/toc.tex}
+        
+        \mainmatter
+        \input{chapters/ch1.tex}
+        \input{chapters/ch2.tex}
+        
+        \backmatter
+        \input{chapters/acks.tex}
+        \end{document}
+    \end{minted}
+    \caption{文档主体区域示例}
+    \lablistings{文档主体区域示例}
+\end{listing}
+
+\section{代码目录结构}
+\labsec{代码目录结构}
+\marginnote{
+    \dirtree{%
+      .1 template-kaobook-zh.
+      .2 \textcolor{cyan}{chapters}.
+      .3 ch1.tex.
+      .3 ch2.tex.
+      .2 \textcolor{cyan}{font}.
+      .3 \textcolor{green}{[一系列字体文件]}.
+      .2 \textcolor{cyan}{infos}.
+      .3 titlepage.tex.
+      .3 toc.tex.
+      .2 \textcolor{cyan}{styles}.
+      .3 kao-ext.sty.
+      .3 kao-zh.sty.
+      .3 kao.sty.
+      .3 kaobook.cls.
+      .3 kaorefs.sty.
+      .2 main.tex.
+      .2 main.pdf.
+    }
+}
+与文档结构对应的是代码目录的结构。在本项目中，将所有要使用的文件组织成若干子目录，确保代码结构清晰、模块化，便于管理与修改。主要的目录有 styles、 infos、 chapters等，说明如下：
+
+\begin{itemize}
+  \item \texttt{chapters/}：存放文档的各个章节文件，每个章节的内容分别保存在独立的 \texttt{.tex} 文件中。
+  \item \texttt{font/}：用于存放文档所需的字体文件，确保文档的排版符合要求。
+  \item \texttt{infos/}：存放文档的信息文件，如封面 (\texttt{titlepage.tex}) 和目录 (\texttt{toc.tex})。
+  \item \texttt{styles/}：存放样式文件和类文件，这些文件用于定义文档的样式和格式。
+  \item \texttt{main.tex}：文档的主文件，包含所有内容和结构的汇总。
+  \item \texttt{main.pdf}：生成的最终 PDF 文件。
+\end{itemize}

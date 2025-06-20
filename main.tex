@@ -1,66 +1,35 @@
 %! Tex program = xelatex
+\documentclass[twoside]{styles/kaobook}
+\usepackage{styles/kaorefs}
+\usepackage{styles/kao-zh}
+\usepackage{styles/kao-ext}
 
-\documentclass[oneside]{styles/kaobok2}
-\usepackage{lipsum} % 用于生成示例文本
-\usepackage{zhlipsum} % 用于生成示例文本
+% 用于生成示例文本
+\usepackage{lipsum}
+\usepackage{zhlipsum} 
 
 \begin{document}
-\input{infos/information.tex}
+\pagelayout{wide}% Use a wide page layout
+\setchapterstyle{plain} % Choose the default chapter heading style
+\input{infos/titlepage.tex}
+
 \frontmatter % START of the pre-document content, uses roman numerals
-\if@twoside 
-    \input{infos/copyright.tex}
-    \maketitle
-\else 
-    \maketitle
-    \input{infos/copyright.tex}
-\fi
-\frontmatter
-\input{infos/acknowledg.tex}
+\input{infos/preface.tex}
 \input{infos/toc.tex}
 
-\mainmatter % 正文部分开始
+\mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
 \input{chapters/ch1.tex}
+\input{chapters/ch2.tex}
+\input{chapters/ch3.tex}
 
-\chapter{引言chapter}
-这是书籍的开始部分。在这里，我们可以介绍书籍的主要内容和结构。
+\setchapterstyle{bar}
+\pagelayout{wide} % No margins
+\addpart{附\ 录}
+\appendix
+\input{appendices/ap1.tex}
 
-\lipsum[1] % 生成示例文本
-
-\zhlipsum[1]
-
-\section{背景介绍section}
-在这个部分，我们将详细介绍书籍的背景信息。
-
-\lipsum[2-3] % 生成示例文本
-
-\zhlipsum[2]
-
-\chapter{章节标题chapter}
-这是书籍的第二章节。在这里，我们将深入探讨一些具体的主题。
-
-\lipsum[4-5] % 生成示例文本
-
-\zhlipsum[3]
-
-\section{子章节标题section}
-在这个子章节中，我们将讨论一些相关的细节。
-
-\lipsum[6-7] % 生成示例文本
-
-\zhlipsum[4]
-
-\begin{itemize}
-    \item zhlipsum[5]
-    \item lipsum[8]
-    \begin{itemize}
-        \item 1234567890
-        \begin{itemize}
-            \item \zhlipsum[5]
-            \item \lipsum[8]
-        \end{itemize}
-        \item abcd,loO
-    \end{itemize}
-\end{itemize}
+\backmatter
+\input{infos/acks.tex}
 
 \end{document}
 

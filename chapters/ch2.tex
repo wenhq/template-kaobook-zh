@@ -1,0 +1,117 @@
+\setchapterpreamble[u]{\margintoc}
+\chapter{主要变动点}
+\labch{主要变动点}
+
+\section[原样式修改]{对原始样式的修改}
+
+\href{https://github.com/fmarotta/kaobook}{kaobook 项目}通过提供一系列 LaTeX 文档类和宏包，为学术著作和技术文档的排版提供了强大的支持。
+
+Kaobook模板相关文件包括 kaobook.cls、kao.sty、kaobiblio.sty、kaorefs.sty 和 kaotheorems.sty，这些文件可以灵活的引用。它们的主要作用为：
+
+\begin{itemize}
+    \item \textbf{kaobook.cls‌} 作为主文档类文件定义了文档的整体排版框架，包括页边距、章节样式、多级标题等。它支持分页控制、多语言兼容等书籍排版特性，为文档提供统一且专业的外观。
+    \item \textbf{kao.sty} 基础样式包提供了颜色方案、自定义命令和工具函数等底层支持。这些功能被广泛应用于文档中的代码高亮、侧边注释等场景，是其他扩展样式包的基础依赖。
+    \item \textbf{kaobiblio.sty} 是参考文献处理模块， 集成并扩展了 biblatex 的功能，预设了符合 kaobook 风格的引用格式（如作者-年份或数字标号）。它支持多文献库管理，简化了参考文献的插入和格式化过程。
+    \item \textbf{kaorefs.sty} 交叉引用增强工具优化了图表、章节等元素的智能引用显示。它支持超链接跳转和动态标签生成，提高了文档中交叉引用的可读性和易用性。
+    \item 数学环境定制包，\textbf{kaotheorems.sty} 提供了统一风格的定理、引理、证明等数学环境框。这些框支持可折叠功能，便于读者浏览和隐藏数学证明等细节内容。同时，它还支持自定义编号规则和边注标记，满足了复杂数学文档的排版需求。
+\end{itemize}
+
+本项目引入了 kaobook.cls、kao.sty和kaorefs.sty三个文件。在引入原始 .cls 或 .sty 文件时，尽量避免修改原文件内容，以便在原项目升级时能够方便地进行集成。尽管如此，仍然不可避免地会遇到一些不适应中文排版的警告或错误，需要针对这些问题进行修复和调整。
+
+
+\subsection{kaobook.cls‌的变动}
+由于要引入 styles 文件夹下的对应文件，因此在第28行，将 \mintinline{latex}|\ProvidesClass{kaobook}| 改为 \mintinline{latex}|\ProvidesClass{styles/kaobook}|；在第44行，将 \mintinline{latex}|\RequirePackage{kao}| 改为 \mintinline{latex}|\RequirePackage{styles/kao}|。
+
+另外，因为中文无法支持“小型大写字母”这样的字体，为避免编译告警故删除了第254和255行的 \mintinline{latex}|\scshape| 命令，如~\reflistings{kaobookcls删除scshape命令}~所示。
+
+\begin{listing}[H]
+    \begin{minted}[linenos=false]{latex}
+        \addtokomafont{part}{\normalfont\bfseries}
+        \addtokomafont{partentry}{\normalfont\bfseries}
+    \end{minted}
+    \caption{删除 scshape 后的 kaobook.cls‌ 文件}
+    \lablistings{kaobookcls删除scshape命令}
+\end{listing}
+
+\subsection{kao.sty的变动}
+kao.sty文件同样要指定到 styles 文件夹下，修改文件第1行为 \mintinline{latex}|\ProvidesPackage{styles/kao}|。
+
+一些兼容性的修改，如第19行删除了 usenames，改为 \newline \mintinline{latex}|\RequirePackage[dvipsnames,table]{xcolor}|； \newline 第29行增加了 listings=false， 改为 \newline \mintinline{latex}|\AtEndPreamble{\RequirePackage[listings=false]{scrhack}}|； 第240行增加了 singlespacing=true，改为 \newline \mintinline{latex}|\RequirePackage[singlespacing=true]{scrlayer-scrpage}|。
+
+调整了目录的深度，从 section 调整到 subsection，文件第1208行改为 \mintinline{latex}|bookmarksdepth=subsection,|。
+
+\subsection{kaorefs.sty的变动}
+kaorefs.sty文件类似地修改到 styles 文件夹下，修改文件第1行为 \mintinline{latex}|\ProvidesPackage{styles/kaorefs}|。
+
+注释掉第41行，以及从48行到148行这段多语言支持的部分。
+
+\section[kao-zh.sty中文支持]{新增kao-zh.sty中文支持文件}
+
+新增的 kao-zh.sty 宏包文件是通过 ctex 包来支持中文的显示，并且通过这个文件对 kaobook 中的关键字展示采用中文重定义，并规定了文档的字体。
+
+\subsection{ctex宏包}
+
+在 kao-zh.sty 文件中引入 ctex 宏包来支持中文，引用时不指定具体字体，后续使用自定义的开源字体代替。
+
+在 \reflistings{kao-zh.sty中引入ctex宏包} 里，如果不准备自定义字体，可以将fontset=none改为对应的mac或windows。
+
+\begin{listing}[H]
+    \begin{minted}[linenos=false]{latex}
+        \RequirePackage[UTF8, fontset=none, scheme=chinese]{ctex}
+    \end{minted}
+    \caption{kao-zh.sty中引入ctex宏包}
+    \lablistings{kao-zh.sty中引入ctex宏包}
+\end{listing}
+
+ctex 是一个专门为支持中文排版而设计的 LaTeX 宏包\sidenote{关于 ctex 宏包的详细文档，可以参考\href{https://www.ctan.org/pkg/ctex}{CTeX 官方文档}}，它是LaTeX 中是中文排版里最常用的标准方案，为 LaTeX 提供了对中文字符、字体、段落、编码等的良好支持。
+
+\subsection{标题文本的中文重定义}
+对于 kao 样式里定义的一些标题文本，在本项目中进行了重新定义\sidenote{在英文环境中更改特定标签（如目录、插图、表格等）的名称，\textbf{应该有更好的修改方式}。}。如 \reflistings{kao-zh.sty中的标题文本重定义} 里的重新定义命令，可以修改以适配自己需要的中文。
+
+\begin{listing}[H]
+    \begin{minted}[linenos=false]{latex}
+        \RequirePackage[english]{babel}
+        \renewcaptionname{english}{\contentsname}{目录}
+        \renewcaptionname{english}{\listfigurename}{插图}
+        \renewcaptionname{english}{\listtablename}{表格}
+        \renewcaptionname{english}{\indexname}{索引}
+        \renewcaptionname{english}{\bibname}{参考文献}
+        \renewcaptionname{english}{\figurename}{图}
+        \renewcaptionname{english}{\tablename}{表}
+        
+        \renewcommand{\lstlistlistingname}{代码列表}
+    \end{minted}
+    \caption{kao-zh.sty中的标题文本重定义}
+    \lablistings{kao-zh.sty中的标题文本重定义}
+\end{listing}
+
+\subsection{自定义字体}
+为了避免使用系统默认字体可能带了的商业使用法律问题，本项目采用了开源免费商用字体。这部分内容可以根据需要自行修改。
+
+\subsubsection{中文字体}
+
+本项目采用 \href{https://github.com/takushun-wu/WenYuanFonts}{WenYuanFonts 项目}提供的文源字体\sidenote{基于思源字体二次开发，开源免费商用。}作为文档字体，另采用 \href{https://github.com/subframe7536/maple-font}{maple-font 项目}提供的Maple Mono 字体\sidenote{开源等宽字体，中英文宽度完美 2:1。}作为文档的等宽字体。所有使用到的字体文件参考 \nrefsec{代码目录结构} 的内容都放在了 font 目录下，且注意，\textbf{字体文件不保证为最新}。
+
+\begin{listing}[H]
+    \begin{minted}[linenos=false]{latex}
+        \setCJKmainfont [Path={font/}, AutoFakeBold, AutoFakeSlant] {WenYuanMincho-Regular.ttf}
+        % 中文无衬线字体
+        \setCJKsansfont [Path={font/}, BoldFont={WenYuanGothic-Medium.ttf}, AutoFakeSlant] {WenYuanGothic-Regular.ttf}
+        % 中文等宽字体
+        \setCJKmonofont [Path={font/}, BoldFont={MapleMonoNormalNL-NF-CN-Bold.ttf},  ItalicFont={MapleMonoNormalNL-NF-CN-Italic.ttf}] {MapleMonoNormalNL-NF-CN-Light.ttf}
+    \end{minted}
+    \caption{kao-zh.sty中使用的中文字体}
+    \lablistings{kao-zh.sty中使用的中文字体}
+\end{listing}
+
+如 \reflistings{kao-zh.sty中使用的中文字体} 所示\sidenote{有些地方配置了 AutoFakeBold 和 AutoFakeSlant，没有什么原因，只是懒得去下载字体了。}，中文有衬线字体使用文源宋体（WenYuanMincho）、中文无衬线字体使用文源黑体（WenYuanGothic）、等宽字体使用 Maple Mono 字体。
+
+\subsubsection{英文字体}
+
+当前使用了 TeX Gyre 系列的字体，准备改为 Times 字体。\todo{使用Times New Roman字体的正确姿势} 
+
+\iffalse
+\section{后续内容}
+\subsection{富强民主}
+\zhlipsum[3]
+\fi

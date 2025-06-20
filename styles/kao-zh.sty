@@ -1,0 +1,46 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{styles/kao-zh}[2025/02/19 v0.1.0 kao-zh]
+
+% 支持中文
+\RequirePackage[UTF8, fontset=none, scheme=chinese]{ctex}
+
+% 段落格式
+\RequirePackage{indentfirst}
+\setlength{\parindent}{2em}
+
+% 图标字体库
+\RequirePackage{fontawesome} 
+\RequirePackage{fontspec}
+% 设置默认英文字体
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+\setmathfont{TeX Gyre Schola Math}
+% 设置默认中文字体
+%\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{Source Han Serif SC}
+%\setCJKsansfont[AutoFakeBold,AutoFakeSlant]{Source Han Sans SC}
+%\setCJKmonofont[AutoFakeBold,AutoFakeSlant]{Source Han Sans SC}
+\setCJKmainfont [Path={font/}, AutoFakeBold, AutoFakeSlant] {WenYuanMincho-Regular.ttf}
+% 中文无衬线字体
+\setCJKsansfont [Path={font/}, BoldFont={WenYuanGothic-Medium.ttf}, AutoFakeSlant] {WenYuanGothic-Regular.ttf}
+% 中文等宽字体
+%\setCJKmonofont[Path={font/},BoldFont={WenYuanGothic-Medium.ttf},AutoFakeSlant]{WenYuanMaru-Medium.ttf}
+\setCJKmonofont [Path={font/}, BoldFont={MapleMonoNormalNL-NF-CN-Bold.ttf},  ItalicFont={MapleMonoNormalNL-NF-CN-Italic.ttf}] {MapleMonoNormalNL-NF-CN-Light.ttf} % 设置中文等宽字体为宋体，影响\ttfamily 和 \texttt 的字体
+% AutoFakeBold, AutoFakeSlant
+
+% 重定义
+\RequirePackage[english]{babel}
+% Define the names for the headings
+\renewcaptionname{english}{\contentsname}{目录}
+\renewcaptionname{english}{\listfigurename}{插图}
+\renewcaptionname{english}{\listtablename}{表格}
+% \newcaptionname{english}{\listtheoremname}{Theorems}
+\renewcaptionname{english}{\indexname}{索引}
+\renewcaptionname{english}{\bibname}{参考文献}
+\renewcaptionname{english}{\figurename}{图}
+\renewcaptionname{english}{\tablename}{表}
+
+\renewcommand{\lstlistlistingname}{代码列表}
+
+%\RequirePackage{silence}
+%\WarningFilter{latex}{Marginpar on page}

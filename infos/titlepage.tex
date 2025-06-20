@@ -1,0 +1,48 @@
+%---------------------------------------------------------------------------------
+%	BOOK INFORMATION
+%---------------------------------------------------------------------------------
+
+% 设置标题页顶部的内容，允许用户在标题页上方添加自定义内容，如图片、文本等。
+\titlehead{\texttt{kaobook}的中文支持和扩展}
+% 设置文档的主题或学科，会作为文档标题页上的一部分，展示为“文档主题”。
+\subject{Latex的学习系列内容}
+% 设置主标题
+\title[Example and documentation of the {\normalfont\texttt{kaobook}} class]{{\normalfont\texttt{kaobook}}文档类的中文适配模板}
+% 设置副标题
+\subtitle{根据您的需要自定义此页面}
+% 作者
+\author[Federico Marotta]{Tigcat\thanks{一个 \LaTeX 热爱者}}
+% 日期
+\date{\today}
+% 出版社或公司
+\publishers{虚拟书社}
+
+\makeatletter
+\uppertitleback{\@titlehead} % Header
+
+\lowertitleback{
+    \textbf{免责声明}\\
+    你可以编辑此页面以满足你的需求。例如，本文中包含了免责声明、书籍说明及其他一些信息。此页面基于~Ken Arroyo Ohori~的论文相应页面和~\href{https://github.com/fmarotta/kaobook/}{kaobook}~宏包作了最小的修改。
+ 
+    \medskip
+ 
+    \textbf{无版权}\\
+    \cczero 基于~\href{https://github.com/fmarotta/kaobook/}{kaobook}~宏包的中文翻译和使用已通过~CC0~许可发布至公共领域。在法律允许的范围内，我放弃对此作品的所有版权及相关或邻接权利。
+    
+    要查看CC0许可协议，请访问：~\\\url{http://creativecommons.org/publicdomain/zero/1.0/}~
+    
+    \medskip
+    
+    \textbf{书籍说明} \\
+    本文件使用~\href{https://sourceforge.net/projects/koma-script/}{\KOMAScript}~和~\href{https://www.latex-project.org/}{\LaTeX}~的~\href{https://github.com/fmarotta/kaobook/}{kaobook}~宏包进行排版。
+    
+    本文件的源代码可在以下地址获取：~\\\url{https://github.com/wenhq/template-kaobook-zh}~（欢迎您进行贡献！）
+    
+    \medskip
+    
+    \textbf{出版商} \\
+    本文件首次发布于2025年2月，由~\@publishers~出版。
+}
+\makeatother
+
+\maketitle

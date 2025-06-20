@@ -1,0 +1,65 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{styles/kao-ext}[2025/02/19 v0.1.0 kao-ext]
+\RequirePackage[UTF8, fontset=none, scheme=chinese]{ctex}
+
+% 自定义颜色
+\definecolor{monVert}{rgb}{0.07,0.93,0.12}
+\definecolor{monOrange}{rgb}{1,0.6,0}
+\definecolor{monBleu}{rgb}{0.2,0.4,0.6}
+\definecolor{monGris}{rgb}{0.95,0.95,0.95}
+\definecolor{monCyan}{RGB}{74,181,247}
+
+%---------------------------------------------------------------------------------
+%	COLOURS
+%---------------------------------------------------------------------------------
+% Uncomment to have coloured headings
+\addtokomafont{title}{\color{monBleu}}
+\addtokomafont{part}{\color{monBleu}}
+\addtokomafont{chapter}{\color{monBleu}}
+\addtokomafont{section}{\color{monBleu}}
+\addtokomafont{subsection}{\color{monBleu}}
+%\addtokomafont{subsection}{\color{Maroon}}
+%\addtokomafont{subsubsection}{\color{Maroon}}
+%\addtokomafont{paragraph}{\color{Maroon}}
+%\addtokomafont{captionlabel}{\color{Blue}}
+%\addtokomafont{pagenumber}{\color{Maroon}}
+
+% Choose the default colors
+\hypersetup{
+	%allcolors=DarkGreen,
+	%anchorcolor=Red,
+	%citecolor=DarkOrange!70!black,
+	citecolor=Black,
+	filecolor=OliveGreen,
+	%linkcolor=Blue,
+	linkcolor=monBleu,
+	%pagecolor = Blue,
+	%menucolor=Red,
+	%runcolor=Red,
+	urlcolor=monBleu,
+}
+
+% 设置代码格式
+\RequirePackage[]{minted}
+% 如果main.tex文件在二级目录里，需要写成：
+%\RequirePackage[outputdir=../]{minted}
+% 设置minted的样式
+\setminted{
+    obeytabs,  %确保源代码文件的缩进使用统一的空格数或制表符
+    mathescape, % 可以在源代码中直接插入数学表达式
+    autogobble, % 自动删除代码块前后的空行
+    linenos=true, % 显示行号
+    breaklines=true, % 自动换行
+    frame=leftline, % 设置代码框
+    fontsize=\small,
+    baselinestretch=1,
+    style=autumn, % 受终端高亮风格启发的多彩样式。
+}
+% 对代码引用部分改为中文
+\renewcommand{\listingscaption}{代码}
+% 参考kaorefs增加代码的引用
+\newcommand{\listingsname}{代码}
+\newcommand{\lablistings}[1]{\label{代码:#1}}
+\newcommand{\reflistings}[1]{\hyperref[代码:#1]\listingsname\xspace\ref{代码:#1}}
+
+\RequirePackage{dirtree}
