@@ -88,3 +88,5 @@ template-kaobook-zh
     - Maple Mono 等宽字体 [subframe7536/maple-font](https://github.com/subframe7536/maple-font)
 - 编译环境：
     - 在线编译环境 [TeXPage](https://www.texpage.com/zh/) 在线协作，云端编译，即时预览
+- 视频教程：
+    - 西北农林科技大学《[LaTeX科技排版](https://coursehome.zhihuishu.com/courseHome/1000095492#teachTeam)》在线课程
