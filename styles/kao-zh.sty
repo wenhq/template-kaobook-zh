@@ -10,23 +10,24 @@
 
 % 图标字体库
 \RequirePackage{fontawesome} 
-\RequirePackage{fontspec}
 % 设置默认英文字体
-\setmainfont{TeX Gyre Termes}
-\setsansfont{TeX Gyre Heros}
-\setmonofont{TeX Gyre Cursor}
-\setmathfont{TeX Gyre Schola Math}
+\RequirePackage{fontspec}
+\setmainfont{Times New Roman}
+\RequirePackage{mathspec}
+\setmathfont{Times New Roman}
+% \setmainfont{TeX Gyre Termes}
+% \setsansfont{TeX Gyre Heros}
+% \setmonofont{TeX Gyre Cursor}
+% \setmathfont{TeX Gyre Schola Math}
+% 英文等宽字体
+\setmonofont [Path={font/}, BoldFont={MapleMonoNormalNL-NF-CN-Bold.ttf},  ItalicFont={MapleMonoNormalNL-NF-CN-Italic.ttf}] {MapleMonoNormalNL-NF-CN-Light.ttf}
+
 % 设置默认中文字体
-%\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{Source Han Serif SC}
-%\setCJKsansfont[AutoFakeBold,AutoFakeSlant]{Source Han Sans SC}
-%\setCJKmonofont[AutoFakeBold,AutoFakeSlant]{Source Han Sans SC}
 \setCJKmainfont [Path={font/}, AutoFakeBold, AutoFakeSlant] {WenYuanMincho-Regular.ttf}
 % 中文无衬线字体
 \setCJKsansfont [Path={font/}, BoldFont={WenYuanGothic-Medium.ttf}, AutoFakeSlant] {WenYuanGothic-Regular.ttf}
 % 中文等宽字体
-%\setCJKmonofont[Path={font/},BoldFont={WenYuanGothic-Medium.ttf},AutoFakeSlant]{WenYuanMaru-Medium.ttf}
-\setCJKmonofont [Path={font/}, BoldFont={MapleMonoNormalNL-NF-CN-Bold.ttf},  ItalicFont={MapleMonoNormalNL-NF-CN-Italic.ttf}] {MapleMonoNormalNL-NF-CN-Light.ttf} % 设置中文等宽字体为宋体，影响\ttfamily 和 \texttt 的字体
-% AutoFakeBold, AutoFakeSlant
+\setCJKmonofont [Path={font/}, BoldFont={MapleMonoNormalNL-NF-CN-Bold.ttf},  ItalicFont={MapleMonoNormalNL-NF-CN-Italic.ttf}] {MapleMonoNormalNL-NF-CN-Light.ttf}
 
 % 重定义
 \RequirePackage[english]{babel}

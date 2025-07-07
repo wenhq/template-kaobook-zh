@@ -108,7 +108,18 @@ ctex 是一个专门为支持中文排版而设计的 LaTeX 宏包\sidenote{关�
 
 \subsubsection{英文字体}
 
-当前使用了 TeX Gyre 系列的字体，准备改为 Times 字体。\todo{使用Times New Roman字体的正确姿势} 
+文档默认的英文字体为 Times New Roman 字体，参考~\nrefsec{Times New Roman字体}~章节内容。可以修改为其他英文字体，曾经比较喜欢的 TeX Gyre 系列字体如~\reflistings{指定英文字体的写法}~所示。
+
+\begin{listing}[H]
+    \begin{minted}[linenos=false]{latex}
+        \setmainfont{TeX Gyre Termes}
+        \setsansfont{TeX Gyre Heros}
+        \setmonofont{TeX Gyre Cursor}
+        \setmathfont{TeX Gyre Schola Math}
+    \end{minted}
+    \caption{指定英文字体的写法}
+    \lablistings{指定英文字体的写法}
+\end{listing}
 
 \iffalse
 \section{后续内容}

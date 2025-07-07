@@ -1,1 +1,36 @@
-\chapter{LaTeX下使用Times New Roman字体的正确姿势} \todo{补充学习内容}
+\chapter{字体相关}
+
+字体的使用是 \LaTeX 里绕不过去的话题，本篇附录用于记录字体使用的一些内容。
+
+\section{Times New Roman字体}
+\labsec{Times New Roman字体}
+本文来源 \href{https://www.latexstudio.net/archives/9323.html}{LaTeX技巧885：LaTeX下使用Times New Roman字体的正确姿势}，引用为附录内容进行了简化和修改。
+
+Times New Roman 字体由 Monotype 公司于1932年发表，并为英国的《泰晤士报》首次采用。这是一个经典的、中规中矩的字体，所以经常被选为西文的标准字体之一。
+
+\begin{itemize}
+    \item Windows 中使用的 Times New Roman 是 Monotype 在最初字形上稍加修改（字宽方面）得到的。
+    \item macOS 系统中使用的 Times Roman 是 Linotype 公司出品的，它与 Monotype 家的 Times New Roman 除了个别字形稍有区别之外（相信你看不出来），几乎完全相同。
+    \item 开源系统中对应的字体，则是 URW 的 Nimbus Roman No9 L 字体，它在 GPL 许可下发布。
+\end{itemize}
+
+它们几乎没有差别。
+
+最推荐的方法是使用 fontspec 系列宏包，直接选取系统中的字体，如~\reflistings{引用 ontspec宏包使用Times New Roman字体}~所示。。
+
+\begin{listing}[H]
+    \begin{minted}[]{latex}
+        \documentclass{article}
+        \usepackage{fontspec}
+        \setmainfont{Times New Roman}
+        \usepackage{mathspec}
+        \setmathfont{Times New Roman}
+        \begin{document}
+        This is the typeface Times New Roman.
+        
+        Enjoy!
+        \end{document}
+    \end{minted}
+    \caption{引用 fontspec 宏包使用 Times New Roman 字体}
+    \lablistings{引用 ontspec宏包使用Times New Roman字体}
+\end{listing}
