@@ -9,6 +9,67 @@
 
 项目还作为学习 LaTeX 的文档供日常查询使用。
 
+### 代码目录结构
+
+主要的目录有 styles、infos、chapters 等，说明如下：
+
+- appendices/：存放附录章节。
+- chapters/：存放文档的各个章节文件，每个章节的内容分别保存在独立的 .tex 文件中。
+- font/：用于存放文档所需的字体文件，确保文档的排版符合要求。
+- infos/：存放文档的信息文件，如封面 (titlepage.tex) 和目录 (toc.tex)。
+- styles/：存放样式文件和类文件，这些文件用于定义文档的样式和格式。
+    - kao.sty kaobook.cls kaorefs.sty 为原文档类的核心内容，仅做最小化修改。
+    - kao-zh.sty 作为本项目实现的汉化内容。
+    - kao-ext.sty 方便文档写作的扩展引用。
+- main.tex：文档的主文件，包含所有内容和结构的汇总。
+- template-kaobook-zh.pdf：生成的最终 PDF 文件。
+
+```
+template-kaobook-zh
+├─ appendices
+│    └─ ap1.tex
+│
+├─ chapters
+│    ├─ ch1.tex
+│    └─ ch2.tex
+│
+├─ font
+│    └─ xxx.ttf
+│
+├─ infos
+│    ├─ acks.tex
+│    ├─ copyright.tex
+│    ├─ preface.tex
+│    ├─ titlepage.tex
+│    └─ toc.tex
+│
+├─ styles
+│    ├─ kao-ext.sty
+│    ├─ kao-zh.sty
+│    ├─ kao.sty
+│    ├─ kaobook.cls
+│    └─ kaorefs.sty
+│
+├─ main.tex
+└─ template-kaobook-zh.pdf
+```
+
+### 快速上手
+
+按照项目目录结构，在导言区进行引用即可。
+
+```latex
+%! Tex program = xelatex
+\documentclass[twoside]{styles/kaobook}
+\usepackage{styles/kaorefs}
+\usepackage{styles/kao-zh}
+\usepackage{styles/kao-ext}
+```
+
+### 改动细节与实现效果
+
+打开 [template-kaobook-zh.pdf](https://github.com/wenhq/template-kaobook-zh/blob/main/template-kaobook-zh.pdf) 了解详情。
+
 ## 注意事项
 
 项目的作者仅为 LaTeX 的爱好者，因此在项目的开发过程中，难免存在一些考虑不周或使用不当的地方。这些问题可能源于作者对 LaTeX 以及 kaobook 特性和功能的理解尚未完全深入，或者由于实践经验的局限性，导致某些细节未能得到充分优化。
@@ -17,6 +78,8 @@
 
 ## 感谢
 
+- 核心引用：
+    - [fmarotta/kaobook](https://github.com/fmarotta/kaobook/) 
 - 代码学习：
     - 物理课程模板书 [JimRou/template_kaobook](https://github.com/JimRou/template_kaobook)
     - 美美哒书籍 LaTeX 模板汉化版 [registor/kaobook-zh](https://github.com/registor/kaobook-zh)
