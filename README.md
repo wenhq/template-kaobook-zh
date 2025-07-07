@@ -80,9 +80,11 @@ template-kaobook-zh
 
 - 核心引用：
     - [fmarotta/kaobook](https://github.com/fmarotta/kaobook/) 
-- 代码学习：
+- kaobook模板学习：
     - 物理课程模板书 [JimRou/template_kaobook](https://github.com/JimRou/template_kaobook)
     - 美美哒书籍 LaTeX 模板汉化版 [registor/kaobook-zh](https://github.com/registor/kaobook-zh)
+- LaTeX 学习：
+    - 《Latex简明速查手册》(8页) [xd15zhn/latexcookbook](https://github.com/xd15zhn/latexcookbook)
 - 免费字体：
     - 文源字体 [takushun-wu/WenYuanFonts](https://github.com/takushun-wu/WenYuanFonts)
     - Maple Mono 等宽字体 [subframe7536/maple-font](https://github.com/subframe7536/maple-font)
