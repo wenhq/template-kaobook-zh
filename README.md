@@ -88,7 +88,12 @@ template-kaobook-zh
 - 免费字体：
     - 文源字体 [takushun-wu/WenYuanFonts](https://github.com/takushun-wu/WenYuanFonts)
     - Maple Mono 等宽字体 [subframe7536/maple-font](https://github.com/subframe7536/maple-font)
-- 编译环境：
-    - 在线编译环境 [TeXPage](https://www.texpage.com/zh/) 在线协作，云端编译，即时预览
+    - 更多商用免费字体 [jaywcjlove/free-font](https://github.com/jaywcjlove/free-font/)
+- Beamer相关
+    - [SDQ 演示模板(2025)](https://www.overleaf.com/latex/templates/sdq-presentation-template-2025/hhrwthdzdwfs)
+    - IEE 官方开发的 LaTeX Beamer 演示文稿模板 [RobertGaugl/Template_LaTeX_IEE_Presentations](https://github.com/RobertGaugl/Template_LaTeX_IEE_Presentations)
+    - 一键将 LaTeX 演示文稿变解说视频 [neylemkeunesp/latex2video-v2](https://github.com/neylemkeunesp/latex2video-v2)
 - 视频教程：
     - 西北农林科技大学《[LaTeX科技排版](https://coursehome.zhihuishu.com/courseHome/1000095492#teachTeam)》在线课程
+- 编译环境：
+    - 在线编译环境 [TeXPage](https://www.texpage.com/zh/) 在线协作，云端编译，即时预览
