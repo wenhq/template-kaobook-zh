@@ -2,12 +2,14 @@
 
 ## 背景
 
-大概是2024年从 [LaTeX 工作室](https://www.latexstudio.net) 的公众号看到了有关 “[经典 kaobook 定制版尽享精致美好科研生活](https://mp.weixin.qq.com/s/6YCZFB2w00ekm7VQZsEfLw)” 的文章介绍，并尝试在实际工作中进行使用。进行文档编写的过程中发现它在处理包含大量不同尺寸图片的文档，尤其是注释说明类操作手册方面表现出色，生成的文档布局整齐、视觉效果良好，且在排版时能够合理分配空间，提升文档的可读性与专业性。因此萌发编写一套中文模板的想法，方便查询和使用。
+大概是2024年从 [LaTeX 工作室](https://www.latexstudio.net) 的公众号看到了有关《[经典 kaobook 定制版尽享精致美好科研生活](https://mp.weixin.qq.com/s/6YCZFB2w00ekm7VQZsEfLw)》的文章介绍，并尝试在实际工作中进行使用。
+
+工作中发现 kaobook 在处理包含大量不同尺寸图片的文档，尤其是注释说明类操作手册方面表现出色，生成的文档布局整齐、视觉效果良好，且在排版时能够合理分配空间，提升文档的可读性与专业性。因此萌发编写一套 kaobook 中文模板的想法，方便查询和使用。
 
 ## 项目说明
 本项目是一个使用 kaobook 的文档模板，为了方便中文文档的快速使用。项目以 kaobook 文档类为基础，通过扩展宏包的方式使用 kao 样式的文档排版，以实现更高效和专业的排版效果。
 
-项目还作为学习 LaTeX 的文档供日常查询使用。
+项目还作为学习 LaTeX 的文档，供日常查询使用。
 
 ### 代码目录结构
 
@@ -18,7 +20,7 @@
 - font/：用于存放文档所需的字体文件，确保文档的排版符合要求。
 - infos/：存放文档的信息文件，如封面 (titlepage.tex) 和目录 (toc.tex)。
 - styles/：存放样式文件和类文件，这些文件用于定义文档的样式和格式。
-    - kao.sty kaobook.cls kaorefs.sty 为原文档类的核心内容，仅做最小化修改。
+    - kao.sty kaobook.cls kaorefs.sty 为 kaobook 文档类的核心内容，仅做最小化修改。kaobook 文档类见 [fmarotta/kaobook](https://github.com/fmarotta/kaobook/) 。
     - kao-zh.sty 作为本项目实现的汉化内容。
     - kao-ext.sty 方便文档写作的扩展引用。
 - main.tex：文档的主文件，包含所有内容和结构的汇总。
@@ -78,22 +80,32 @@ template-kaobook-zh
 
 ## 感谢
 
+### 项目使用
+
 - 核心引用：
     - [fmarotta/kaobook](https://github.com/fmarotta/kaobook/) 
-- kaobook模板学习：
+- kaobook模板参考：
     - 物理课程模板书 [JimRou/template_kaobook](https://github.com/JimRou/template_kaobook)
     - 美美哒书籍 LaTeX 模板汉化版 [registor/kaobook-zh](https://github.com/registor/kaobook-zh)
-- LaTeX 学习：
-    - 《Latex简明速查手册》(8页) [xd15zhn/latexcookbook](https://github.com/xd15zhn/latexcookbook)
 - 免费字体：
     - 文源字体 [takushun-wu/WenYuanFonts](https://github.com/takushun-wu/WenYuanFonts)
     - Maple Mono 等宽字体 [subframe7536/maple-font](https://github.com/subframe7536/maple-font)
     - 更多商用免费字体 [jaywcjlove/free-font](https://github.com/jaywcjlove/free-font/)
+- 编译环境：
+    - 在线编译环境 [TeXPage](https://www.texpage.com/zh/) 在线协作，云端编译，即时预览
+
+### 学习资料
+- LaTeX 学习：
+    - 《Latex简明速查手册》(8页) [xd15zhn/latexcookbook](https://github.com/xd15zhn/latexcookbook)
+- 视频教程：
+    - 西北农林科技大学《[LaTeX科技排版](https://coursehome.zhihuishu.com/courseHome/1000095492#teachTeam)》在线课程
 - Beamer相关
     - [SDQ 演示模板(2025)](https://www.overleaf.com/latex/templates/sdq-presentation-template-2025/hhrwthdzdwfs)
     - IEE 官方开发的 LaTeX Beamer 演示文稿模板 [RobertGaugl/Template_LaTeX_IEE_Presentations](https://github.com/RobertGaugl/Template_LaTeX_IEE_Presentations)
     - 一键将 LaTeX 演示文稿变解说视频 [neylemkeunesp/latex2video-v2](https://github.com/neylemkeunesp/latex2video-v2)
-- 视频教程：
-    - 西北农林科技大学《[LaTeX科技排版](https://coursehome.zhihuishu.com/courseHome/1000095492#teachTeam)》在线课程
-- 编译环境：
-    - 在线编译环境 [TeXPage](https://www.texpage.com/zh/) 在线协作，云端编译，即时预览
+- TikZ 绘图
+    - [TikZ 100页手册](https://alg-d.com/math/tikz.pdf)，日文但中文阅读毫无障碍
+    - 使用LaTeX绘制学术图表的示例 [xinychen/awesome-latex-drawing](https://github.com/xinychen/awesome-latex-drawing)
+    - [TikZiT](https://tikzit.github.io/) 作图工具，使用帮助参考 [先利用tikzit保存多组自己作画的矢量图](https://www.zhihu.com/question/514898404/answer/2707657912)
+- 其他宏包
+    - 创建封面及护封 [BookCover 文档类](https://github.com/tibortomacs/bookcovertemplates)
