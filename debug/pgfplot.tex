@@ -1,0 +1,57 @@
+\documentclass[border=5pt]{standalone} % standalone类适合单独编译图表
+\usepackage[UTF8]{ctex}  % 中文支持
+\usepackage{pgfplots}    % 加载pgfplots
+\pgfplotsset{compat=newest}% 使用兼容模式(根据你的版本调整)
+
+% 设置中文字体(如果需要特定字体)
+% \setCJKmainfont{SimSun}
+
+% 定义图表全局样式
+\pgfplotsset{
+    every axis/.append style={
+        font=\small,          % 全局字体大小
+        line width=0.5pt,     % 轴线宽度
+        tick style={color=black}, % 刻度样式
+    },
+    every axis label/.append style={font=\small}, % 轴标签样式
+    every tick label/.append style={font=\footnotesize}, % 刻度标签样式
+    every legend/.append style={font=\footnotesize}, % 图例样式
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,                      % 图表宽度
+        height=7cm,                      % 图表高度
+        xlabel={横坐标 ($x$)},           % 中文横轴标签
+        ylabel={纵坐标 ($y$)},           % 中文纵轴标签
+        title={测试数据可视化},           % 中文标题
+        grid=both,                       % 显示网格
+        legend pos=north west,           % 图例位置
+        legend cell align=left,          % 图例对齐方式
+    ]
+    
+    % 第一条曲线
+    \addplot[color=red, mark=square, thick] 
+        table[x=x, y=y1, col sep=comma] {data/test.csv};
+    \addlegendentry{数据集一}
+    
+    % 第二条曲线
+    \addplot[color=blue, mark=triangle, thick] 
+        table[x=x, y=y2, col sep=comma] {data/test.csv};
+    \addlegendentry{数据集二}
+    
+    % 第三条曲线
+    \addplot[color=green!60!black, mark=o, thick] 
+        table[x=x, y=y3, col sep=comma] {data/test.csv};
+    \addlegendentry{数据集三}
+    
+    % 添加注释文本
+    \node[anchor=south east, align=left, font=\small] 
+        at (rel axis cs:0.98,0.02) {注：这是一个\\测试图表};
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
